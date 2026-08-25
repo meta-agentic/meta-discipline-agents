@@ -24,11 +24,16 @@ standard for — was drawn from two books by Antonio Gulli:
   (Springer, 2025; [publisher](https://link.springer.com/book/9783032014016)) — the pattern
   taxonomy. Its 21 patterns are the source of the grouping and the selection criteria
   summarized in `skills/agent-architecture/references/pattern-catalogue.md`.
-- ***Building AI Agents: From Design Patterns to Production*** (draft, read with the
-  author's permission; companion code at
+- ***Building AI Agents: From Design Patterns to Production*** (companion code at
   [agulli/atlas-agents](https://github.com/agulli/atlas-agents), MIT) — the operational
   discipline: the harness layers, the guardrail and threat model, trajectory evaluation,
   loop engineering, and the review-inversion argument.
+
+Both are circulated publicly by the author — openly shared documents, an MIT-licensed
+companion repository, and all author royalties donated to Save the Children. Citing them by
+name is the attribution such a release asks for, and this pack is downstream evidence that
+it works: the books supplied the map of what an agent engineering discipline must cover, and
+the codification here is our own.
 
 **Concepts only.** No text, code, figure, table, or exercise from either book is copied,
 quoted at length, or vendored here. Every skill is original prose written against standard
