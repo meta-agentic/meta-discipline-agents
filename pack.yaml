@@ -1,0 +1,65 @@
+# agents pack — manifest + config schema (method vs. opinion; see meta-os/systems/packs.md).
+# Skills read config-first, fall back to these defaults. `scripts/packs.sh config agents`
+# resolves the instance's .packs.yaml `config:` over these and validates enums.
+# Contract: meta-os/systems/pack.schema.json — validate before publishing.
+version: 1
+name: agents
+description: "Agent engineering discipline (7 skills): deciding whether to build an agent and what shape it takes, prompt architecture as versioned code, declarative skill authoring, the harness that makes enforcement deterministic, the safety and permission model, trajectory-level evaluation, and the engineered loop that runs unattended — each emitting a checkable ledger. First-party."
+provenance: first-party
+license: MIT
+
+# The skill names other packs may depend on. A collision on a provided name is an
+# error, not a warning — see meta-os/systems/packs.md, "Dependencies between packs".
+provides:
+  [
+    agent-architecture,
+    agent-prompting,
+    agent-skills,
+    agent-harness,
+    agent-safety,
+    agent-evaluation,
+    loop-engineering,
+  ]
+
+config:
+  autonomy:
+    default: semi-autonomous
+    one_of: supervised | semi-autonomous | autonomous
+    doc: "The blast-radius knob, and the single most consequential setting in this pack — it decides how much rope an agent gets, not how clever it is. `supervised` = a human sees every proposed action before it executes; `semi-autonomous` = the agent runs freely inside its tool constraints and produces diffs, pausing for review before anything is committed or mutated; `autonomous` = the loop runs to its termination condition unattended. The active profile's conventions load from profiles/<autonomy>.md. Start any new capability, codebase, or irreversible-action class at `supervised` regardless of this default."
+  sandbox:
+    default: container
+    one_of: none | path | container | microvm
+    doc: "Where agent-generated code executes. `none` = host execution, permitted only for agents with no code-execution tool at all; `path` = in-process with resolved-path validation, the minimum viable boundary for local development; `container` = a disposable container with no host mount; `microvm` = an isolated microVM per task, the production standard. Never `none` when a code-execution or shell tool is registered — the pack's rigor standard rejects that combination outright."
+  max-iterations:
+    default: 10
+    doc: "Hard cap on agent loop turns before the run aborts and escalates. There is no valid value of `unbounded`; a loop with no cap is the single most reliable way to convert a bug into an invoice."
+  session-budget:
+    default: 5.00
+    doc: "Per-session spend ceiling in USD, enforced in code and checked between turns, not advisory in a prompt. Exceeding it aborts the run and escalates rather than degrading silently."
+  eval-pass-rate:
+    default: 0.90
+    doc: "Minimum eval-suite pass rate below which a deploy fails. Enforced as a CI assertion so a regression blocks the build the way a compile error does."
+  eval-hallucination-rate:
+    default: 0.05
+    doc: "Maximum tolerated hallucination rate across the eval suite. Tightening this is routine; loosening it is a reviewable change to the suite, not a config tweak — see agent-evaluation's rigor standard on eval diffs."
+  judge:
+    default: single
+    one_of: single | consensus
+    doc: "How LLM-as-judge grading resolves. `single` = one judge model, adequate for clear-cut cases; `consensus` = an odd-numbered panel at majority vote, which is what borderline cases need since a single judge does not reliably agree with itself on them. Either way the judge writes its reasoning before its score."
+  skill-review:
+    default: required
+    one_of: required | advisory
+    doc: "Whether an agent-authored or agent-modified skill needs human review before it is trusted. `required` = it lands through the same pull request a human-written skill would. `advisory` is for throwaway sandboxes only: a SKILL.md is executable behavior, so auto-merging one injects unreviewed instructions into every future session."
+  trace-home:
+    doc: "Where trajectory logs, escalations and ledgers are written — an instance memory path (e.g. memory/raw/agents) or a trace backend. Without a durable trace, a failure is unreproducible and this pack's evaluation and loop skills have nothing to read."
+  escalation:
+    doc: "Where a stalled or budget-exceeded loop pages a human — a channel, an issue tracker, or an on-call path. Required when autonomy=autonomous; a loop with no escalation target does not escalate, it just stops quietly."
+
+profiles:
+  supervised: profiles/supervised.md
+  semi-autonomous: profiles/semi-autonomous.md
+  autonomous: profiles/autonomous.md
+
+# Retained for resolvers that still read it; `config.autonomy.default` above is the
+# contract (meta-os/systems/pack.schema.json marks this key legacy). Keep both in sync.
+default_profile: semi-autonomous

@@ -1,0 +1,30 @@
+# Copy this block under packs.agents in your instance's .packs.yaml, then edit.
+# scripts/packs.sh config agents  prints the resolved values (profile defaults filled in).
+packs:
+  agents:
+    config:
+      autonomy: semi-autonomous   # supervised | semi-autonomous | autonomous
+      sandbox: container          # none | path | container | microvm
+      max-iterations: 10
+      session-budget: 5.00
+      eval-pass-rate: 0.90
+      eval-hallucination-rate: 0.05
+      judge: single               # single | consensus
+      skill-review: required      # required | advisory
+      trace-home: memory/raw/agents
+      escalation: "#agents-oncall"
+
+# An unattended production loop instead — note that raising autonomy is the point at
+# which every other knob stops being a default and starts being a commitment:
+#
+# packs:
+#   agents:
+#     config:
+#       autonomy: autonomous
+#       sandbox: microvm          # host execution is not an option at this level
+#       max-iterations: 40
+#       session-budget: 50.00
+#       judge: consensus          # borderline grading decides whether the loop stops
+#       skill-review: required    # self-modification always goes through review
+#       trace-home: memory/raw/agents
+#       escalation: "https://github.com/<owner>/<repo>/issues"
