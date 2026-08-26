@@ -5,18 +5,16 @@ description: "Use before building or reviewing anything that calls a model in a 
 
 # Agent architecture — the shape decision
 
-A practitioner reaching for this skill is about to commit to a structure, and structure is
-the most expensive thing to change later. The work is to settle three questions in order —
-*should this be an agent, how much structure does it justify, and how does it reason* — and
-to write the answers down where a reviewer can challenge them.
+Structure is the most expensive thing to change later, so this skill settles it before any
+code exists. Three questions, in order: should this be an agent at all, how much structure
+does the task justify, and how should it reason. Most proposals do not survive the first —
+a refusal is a successful outcome here, not a failed design review — and whatever is
+decided gets written down in a form a reviewer can argue with.
 
-This is the pack's entry point. It settles *shape*; the siblings fill that shape in — the
-instruction layer ([[skills/agent-prompting/SKILL|agent-prompting]]), the procedure library
-([[skills/agent-skills/SKILL|agent-skills]]), the deterministic enforcement
-([[skills/agent-harness/SKILL|agent-harness]]), the permissions
-([[skills/agent-safety/SKILL|agent-safety]]), the grading
-([[skills/agent-evaluation/SKILL|agent-evaluation]]) and the loop around it all
-([[skills/loop-engineering/SKILL|loop-engineering]]).
+This is where the pack starts. It fixes the shape; the other six skills fill it in — the
+prompt, the procedures the agent loads, the harness that decides what actually executes,
+the permissions, the grading, and the loop that carries it to a goal unattended. Worth
+reading first even if you came for one of the others.
 
 ## Method
 
