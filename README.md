@@ -55,6 +55,10 @@ The three-part test every pack must pass (defined in meta-os's `systems/pack-str
   no verifier named, a tool granted more scope than its task, an eval threshold lowered
   without a reviewed diff, a skill merged unread.
 
+That third test is Popper's rule moved from hypotheses to engineering decisions: a standard
+you cannot fail is not a standard. Every ledger here is specified by how it *fails*, so
+"we considered it" is never a passing verdict.
+
 ## Use it
 
 **Standalone**, in any Claude Code project:
