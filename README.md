@@ -1,10 +1,18 @@
-# meta-os agents pack
+# meta-discipline-agents
 
-The **agent engineering discipline** for a [meta-os](https://github.com/meta-agentic/meta-os)
-Agentic OS instance: how to decide whether to build an agent, what shape it takes, and what
-has to be true before it is allowed to run without you. A pack is a codified discipline — a
-method, a standard of rigor, and portability across estates (see the framework's
-`systems/pack-strategy.md`).
+**Seven skills that make an AI coding agent follow an engineering discipline instead of improvising.**
+
+A *skill* is a markdown procedure an agent loads only when the task matches it. These seven
+cover the decisions that go wrong quietly: whether the thing should be an agent at all, how
+its prompt is versioned, what its harness is allowed to execute, what it may touch, how it
+is graded, and what has to be true before it runs without you watching.
+
+Each skill ends in a **named artifact** — a decision record, a harness contract, a loop
+charter — with a defined *failing* reading. That is the point: a reviewer audits a run
+against the discipline's own standard instead of taking the agent's word for it.
+
+Works standalone in any Claude Code project, and mounts as a pack in
+[meta-os](https://github.com/meta-agentic/meta-os). MIT.
 
 | Skill | What it drives | Checkable output |
 |-------|----------------|------------------|
@@ -36,7 +44,7 @@ not.
 
 ## Why this is a discipline, not a prompt pile
 
-The three-part test every pack must pass (`systems/pack-strategy.md`):
+The three-part test every pack must pass (defined in meta-os's `systems/pack-strategy.md`):
 
 - **Recognizable** — an engineer who has shipped an agent and then operated it reads the
   escalation ladder, the harness layers and the loop charter as how the work actually goes.
@@ -47,9 +55,21 @@ The three-part test every pack must pass (`systems/pack-strategy.md`):
   no verifier named, a tool granted more scope than its task, an eval threshold lowered
   without a reviewed diff, a skill merged unread.
 
-## Mount it
+## Use it
 
-From your instance root (see the framework's `systems/packs.md`):
+**Standalone**, in any Claude Code project:
+
+```bash
+git clone https://github.com/meta-agentic/meta-discipline-agents
+mkdir -p .claude/skills
+cp -r meta-discipline-agents/skills/* .claude/skills/
+```
+
+Nothing else is required. Every skill runs on documented defaults — `max-iterations: 10`,
+`session-budget: 5.00`, `autonomy: semi-autonomous` — listed in a config table at the foot
+of each `SKILL.md`, and overridable wherever your project keeps configuration.
+
+**As a [meta-os](https://github.com/meta-agentic/meta-os) pack**, from your instance root:
 
 ```bash
 scripts/packs.sh add agents
