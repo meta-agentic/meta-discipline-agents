@@ -5,17 +5,15 @@ description: "Use when authoring, reviewing, refactoring, or securing a declarat
 
 # Agent skills — procedures the agent loads when it needs them
 
-A skill is a procedure written for a machine that will find every shortcut and take it. That
-sentence explains every convention below. The practitioner's job is to write a procedure
-that holds under pressure, make it findable by the task that needs it, and treat the file as
-what it is — executable behavior that gets reviewed.
+A skill is a procedure written for a machine that will find every shortcut and take it.
+That sentence explains every convention below: write a procedure that holds under pressure,
+make it findable by the task that needs it, and treat the file as what it is — executable
+behavior that gets reviewed before it ships.
 
-The problem it solves: standing instructions accumulate until an agent skips step two of a
-five-step procedure because it was buried on line 400. The fix is not a bigger context
-window; it is a library loaded on demand, which is where
-[[skills/agent-prompting/SKILL|agent-prompting]] sends instructions once the prompt outgrows
-them.
-
+The problem it solves is accumulation. Standing instructions pile up until an agent skips
+step two of a five-step procedure because it was buried on line 400. The fix is not a bigger
+context window; it is a library loaded on demand, which is where instructions go once the
+prompt has outgrown them.
 ## Method
 
 ### 1. Write the description as an activation index

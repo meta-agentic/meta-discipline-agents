@@ -7,14 +7,13 @@ description: "Use when writing, restructuring, debugging, or reviewing an agent'
 
 A chat prompt is a conversation. An agent's system prompt is the operating instruction for
 an autonomous process, and it fails the way software fails: silently, in production, in a
-branch nobody tested. A practitioner here is not writing better prose — they are giving the
-prompt a structure that can be diffed, a persona that has been measured, and a test suite
-that fails the build.
+branch nobody tested. The work here is not better prose — it is giving the prompt a
+structure that can be diffed, a persona that has been measured, and a test suite that fails
+the build.
 
-Sits between [[skills/agent-architecture/SKILL|agent-architecture]], which decided the
-shape, and [[skills/agent-harness/SKILL|agent-harness]], which owns every rule that must be
-deterministic rather than persuasive.
-
+It sits between two neighbours. The shape decision settles what the agent *is*; this settles
+what it is *told*; and any rule that has to hold rather than merely persuade gets handed on
+to the harness, where it becomes code.
 ## Method
 
 ### 1. Stack the four layers, in order

@@ -6,9 +6,9 @@ description: "Use when an agent should run to a goal without a human re-promptin
 # Loop engineering — the system is the loop
 
 If you are reading an error, pasting it back, and waiting — then reading the next error —
-you are not operating an autonomous system. You *are* its trigger, its verifier, its memory,
-and its escalation path. The practitioner's job here is to remove themselves from those four
-jobs, deliberately and in that order.
+you are not operating an autonomous system. You *are* its trigger, its verifier, its memory
+and its escalation path. The work here is removing yourself from those four jobs,
+deliberately and in that order.
 
 This is the third of three disciplines, and it stacks rather than replaces:
 
@@ -19,9 +19,7 @@ This is the third of three disciplines, and it stacks rather than replaces:
 | **Loop engineering** | The system *is* the loop | The termination condition and everything driving toward it |
 
 A loop wrapped around a weak prompt in an unstructured environment automates the production
-of poor output, faster. Get [[skills/agent-prompting/SKILL|agent-prompting]] and
-[[skills/agent-harness/SKILL|agent-harness]] right first.
-
+of poor output, faster. Get the prompt and the harness right first.
 ## Method
 
 ### 1. Design the verifier first

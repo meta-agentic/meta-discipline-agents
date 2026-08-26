@@ -5,14 +5,13 @@ description: "Use when deciding what an agent is permitted to do, and what stand
 
 # Agent safety — guardrails, permissions, and the threat model
 
-Two failure classes needing different machinery. **Guardrails** stop bad content crossing
+Two failure classes that need different machinery. **Guardrails** stop bad content crossing
 the boundary in either direction. **Permissions** decide what the agent is capable of at
-all. Guardrails are inspection; permissions are architecture. A practitioner who builds only
-guardrails ends up inspecting an agent for misuse of a capability it never needed.
+all. Guardrails are inspection; permissions are architecture — and a system with only
+guardrails ends up inspecting an agent for misuse of a capability it never needed to have.
 
-Decides *what capability exists*; [[skills/agent-harness/SKILL|agent-harness]] then decides
-how that capability is bounded in code.
-
+This skill decides what capability exists in the first place. The harness then decides how
+that capability is bounded once it does.
 ## Method
 
 ### 1. Guard both directions, cheapest layer first

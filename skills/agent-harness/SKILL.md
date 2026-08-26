@@ -6,14 +6,13 @@ description: "Use when building or reviewing everything that surrounds the model
 # Agent harness — model proposes, code disposes
 
 **Agent = model + harness.** The model reasons and proposes; the harness decides whether the
-proposal executes. Every property this pack cares about — safety, cost, reproducibility, the
-right to run unattended — is a property of the harness, not of the model. A practitioner
-here is converting rules that need watching into rules that cannot be broken.
+proposal executes. Every property worth having — safety, cost, reproducibility, the right to
+run unattended — belongs to the harness rather than the model. The work here is converting
+rules that need watching into rules that cannot be broken.
 
-The governing test: *if the agent were actively trying to violate this rule, would it
-succeed?* If yes, the rule is in the prompt and belongs here. That is the traffic
-[[skills/agent-prompting/SKILL|agent-prompting]] sends this way.
-
+One test decides what belongs in this file: *if the agent were actively trying to violate
+this rule, would it succeed?* If yes, the rule is currently living in a prompt, where it is
+a probability, and it belongs here, where it is not.
 ## Method
 
 ### 1. Build the execution boundary

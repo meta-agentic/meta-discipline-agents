@@ -5,16 +5,15 @@ description: "Use when building, extending, or reviewing an agent's eval suite, 
 
 # Agent evaluation — grade the path, not just the destination
 
-Grading an agent like a chatbot — check the final answer, move on — measures the one thing
-cheapest to get right by accident. An agent can reach a correct answer through fifteen
-erratic tool calls instead of three, exhaust a budget doing it, and score full marks. The
-route is where the failure lives, so the practitioner's job is to make the route gradeable
-and then gate on it.
+Grading an agent the way you would grade a chatbot — check the final answer, move on —
+measures the one thing cheapest to get right by accident. An agent can reach a correct
+answer through fifteen erratic tool calls instead of three, exhaust its budget doing it, and
+still score full marks. The route is where the failure lives, so the work is to make the
+route gradeable and then gate on it.
 
-One hard prerequisite from [[skills/agent-harness/SKILL|agent-harness]]: a persisted
-trajectory. Without a recorded path there is nothing to grade but the output, and you are
-back to chatbot evaluation.
-
+That depends on one thing the harness owes this skill: a persisted trajectory. Without a
+recorded path there is nothing to grade but the output, which is chatbot evaluation again
+under a different name.
 ## Method
 
 ### 1. Write the cases before the agent
